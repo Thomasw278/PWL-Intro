@@ -1,73 +1,75 @@
 @extends('main.parent')
 @section('title', 'Edit Mahasiswa')
+
 @section('content')
-<style>
-    .btnkirim {
-        margin: 15px;
-        width: 150px;
-        height: 50px;
-        background-color: green;
-        color: white;
-        font-weight: bold;
-    }
-    .btnkirim:hover {
-        background-color: darkgreen;
-    }
-</style>
-<form action="/proses" method="post">
-    @csrf
-    <table border="1" style="border-collapse:collapse">
-        <tr>
-            <td><label>NIM</label></td>
-            <td><input type="number" name="nim" value=<?php 
-                    if (empty($nim)) {
-                        echo "";
-                    } else {
-                        echo "$nim";
-                    }
-                ?>>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Nama</label></td>
-            <td><input type="text" name="nama"></td>
-        </tr>
-        <tr>
-            <td><label>Gender</label></td>
-            <td>
-                <input type="radio" id="laki" name="gender" value="Laki-laki">
-                <label for="laki">Laki-laki</label>
-                <input type="radio" id="perempuan" name="gender" value="Perempuan">
-                <label for="perempuan">Perempuan</label>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Prodi</label></td>
-            <td>
-                <select name="prodi">
-                    <option value="Informatika">Informatika</option>
-                    <option value="Sistem Informasi">Sistem Informasi</option>
+    <h2 class="h4 mb-4 text-center fw-bold text-success">Edit Data Mahasiswa</h2>
+
+    <form action="/proses" method="post">
+        @csrf
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="nim" class="form-label fw-bold">NIM</label>
+                <input type="number" class="form-control" id="nim" name="nim" value="{{ $nim ?? '' }}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="nama" class="form-label fw-bold">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" value="{{ $nama ?? '' }}">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold d-block">Gender</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="laki" name="gender" value="Laki-laki" {{ (isset($gender) && $gender == 'Laki-laki') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="laki">Laki-laki</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="perempuan" name="gender" value="Perempuan" {{ (isset($gender) && $gender == 'Perempuan') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="perempuan">Perempuan</label>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="prodi" class="form-label fw-bold">Program Studi</label>
+                <select class="form-select" id="prodi" name="prodi">
+                    <option value="Informatika" {{ (isset($prodi) && $prodi == 'Informatika') ? 'selected' : '' }}>Informatika</option>
+                    <option value="Sistem Informasi" {{ (isset($prodi) && $prodi == 'Sistem Informasi') ? 'selected' : '' }}>Sistem Informasi</option>
                 </select>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Pakar</label></td>
-            <td>
-                <input type="checkbox" id="pakar1" name="pakar[]" value="AI">
-                <label for="pakar1">AI</label><br>
-                <input type="checkbox" id="pakar2" name="pakar[]" value="Jaringan">
-                <label for="pakar2">Jaringan</label><br>
-                <input type="checkbox" id="pakar3" name="pakar[]" value="Database">
-                <label for="pakar3">Database</label><br>
-                <input type="checkbox" id="pakar4" name="pakar[]" value="Web-Development">
-                <label for="pakar4">Web Development</label><br>
-            </td>
-        </tr>
-        <tr>
-            <td colspan=2 align='center'>
-                <button type="submit" class='btnkirim'>Edit Data</button>
-            </td>
-        </tr>
-    </table>
-</form>
+            </div>
+
+            <div class="col-12">
+                <label class="form-label fw-bold d-block">Bidang Kepakaran</label>
+                <div class="row">
+                    <div class="col-md-3 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pakar1" name="pakar[]" value="AI">
+                            <label class="form-check-label" for="pakar1">AI</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pakar2" name="pakar[]" value="Jaringan">
+                            <label class="form-check-label" for="pakar2">Jaringan</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pakar3" name="pakar[]" value="Database">
+                            <label class="form-check-label" for="pakar3">Database</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pakar4" name="pakar[]" value="Web-Development">
+                            <label class="form-check-label" for="pakar4">Web Development</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-success px-5 py-2 fw-bold">Edit Data</button>
+            </div>
+        </div>
+    </form>
 @endsection

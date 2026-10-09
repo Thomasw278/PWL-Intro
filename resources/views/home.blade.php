@@ -1,69 +1,41 @@
 @extends('main.parent')
 @section('title', 'Beranda')
+
 @section('content')
-    <h2>Data Mahasiswa Terdaftar</h2>
-    <table border="1">
-        <tr>
-            <th>NIM</th>
-            <td>
-                <?php 
-                    if(empty($nim)){
-                        echo "-";
-                    } else {
-                        echo "$nim";
-                    }
-                ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Nama</th>
-            <td>
-                <?php 
-                    if(empty($nama)){
-                        echo "-";
-                    } else {
-                        echo "$nama";
-                    }
-                ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Gender</th>
-            <td>
-                <?php 
-                    if(empty($gender)){
-                        echo "-";
-                    } else {
-                        echo "$gender";
-                    }
-                ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Program Studi</th>
-            <td>
-                <?php 
-                    if(empty($prodi)){
-                        echo "-";
-                    } else {
-                        echo "$prodi";
-                    }
-                ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Bidang Kepakaran</th>
-            <td>
-                <?php 
-                    if(empty($pakar)){
-                        echo "-";
-                    } else {
-                        foreach($pakar as $i){
-                            echo "$i ";
-                        }
-                    }
-                ?>
-            </td>
-        </tr>
-    </table>
+    <h2 class="h4 mb-4 text-center fw-bold text-success">Data Mahasiswa Terdaftar</h2>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <tbody>
+                <tr>
+                    <th style="width: 30%;" class="bg-light">NIM</th>
+                    <td>{{ $nim ?? '-' }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Nama</th>
+                    <td>{{ $nama ?? '-' }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Gender</th>
+                    <td>{{ $gender ?? '-' }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Program Studi</th>
+                    <td>{{ $prodi ?? '-' }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Bidang Kepakaran</th>
+                    <td>
+                        @if(!empty($pakar))
+                            @foreach($pakar as $i)
+                                <span class="badge bg-success me-1">{{ $i }}</span>
+                            @endforeach
+                        @else
+                            -
+                        @endif
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 @endsection
