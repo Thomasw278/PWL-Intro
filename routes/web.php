@@ -11,8 +11,3 @@ Route::get('/deletemahasiswa/{nim}', [PageController::class, 'deletemahasiswa'])
 Route::get('/editmahasiswa/{nim}', [PageController::class, 'editmahasiswa']);
 Route::get('/formmahasiswa', [PageController::class, 'tambahmahasiswa']);
 Route::post('/proses', [PageController::class, 'prosesmahasiswa']);
-
-// Without MVC
-// Route::get('/', function () {
-//     return view('home');
-// });

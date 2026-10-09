@@ -1,42 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Edit Mahasiswa</title>
-    <style>
-        h1 {
-            text-align: center; 
-        }
-        img {
-            display: block;        
-            margin: 0 auto;        
-        }
-        table {
-            margin: 0 auto;
-        }
-        .btnkirim {
-            margin: 15px;
-            width: 150px;
-            height: 50px;
-            background-color: green;
-            color: white;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <h1>Form Edit Mahasiswa</h1>
-    <img src="{{asset('Image/ukdw.png') }}" alt="Logo UKDW" width="300" height="450">
-    <br>
-    <form action="/proses" method="post">
+@extends('main.parent')
+@section('title', 'Edit Mahasiswa')
+@section('content')
+<style>
+    .btnkirim {
+        margin: 15px;
+        width: 150px;
+        height: 50px;
+        background-color: green;
+        color: white;
+        font-weight: bold;
+    }
+    .btnkirim:hover {
+        background-color: darkgreen;
+    }
+</style>
+<form action="/proses" method="post">
     @csrf
     <table border="1" style="border-collapse:collapse">
         <tr>
             <td><label>NIM</label></td>
-            <td><input type="number" name="nim" value=
-                <?php 
-                    if(empty($nim)){
+            <td><input type="number" name="nim" value=<?php 
+                    if (empty($nim)) {
                         echo "";
                     } else {
                         echo "$nim";
@@ -86,5 +70,4 @@
         </tr>
     </table>
 </form>
-</body>
-</html>
+@endsection

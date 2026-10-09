@@ -32,3 +32,4 @@ class PageController extends Controller
         return view('home', compact('nim','nama','gender','prodi','pakar'));
     }
 }
+

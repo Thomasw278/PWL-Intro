@@ -1,35 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Input Mahasiswa</title>
-    <style>
-        h1 {
-            text-align: center; 
-        }
-        img {
-            display: block;        
-            margin: 0 auto;        
-        }
-        table {
-            margin: 0 auto;
-        }
-        .btnkirim {
-            margin: 15px;
-            width: 150px;
-            height: 50px;
-            background-color: green;
-            color: white;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <h1>SELAMAT DATANG DI PORTAL MAHASISWA UKDW</h1>
-    <img src="{{asset('Image/ukdw.png') }}" alt="Logo UKDW" width="300" height="450">
-    <br>
-    <form action="/proses" method="post">
+@extends('main.parent')
+@section('title', 'Form Mahasiswa')
+@section('content')
+<style>
+    .btnkirim {
+        margin: 15px;
+        width: 150px;
+        height: 50px;
+        background-color: green;
+        color: white;
+        font-weight: bold;
+    }
+    .btnkirim:hover {
+        background-color: darkgreen;
+    }   
+</style>
+<form action="/proses" method="post">
     @csrf
     <table border="1" style="border-collapse:collapse">
         <tr>
@@ -78,5 +63,4 @@
         </tr>
     </table>
 </form>
-</body>
-</html>
+@endsection
