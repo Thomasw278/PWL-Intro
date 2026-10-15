@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('genre_tables', function (Blueprint $table) {
-            $table->char('id_genre', 5)->primary();
-            $table->string('nama_genre',50);
+        Schema::create('dosens', function (Blueprint $table) {
+            $table->char('nik',7)->primary();
+            $table->string('namaDosen',35)->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('genre_tables');
+        Schema::dropIfExists('dosens');
     }
 };
