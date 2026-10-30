@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('jadwalId');
             $table->string('hari', 6)->nullable();
             $table->char('waktu')->default('07.30-10.20');
-            $table->char('kodeMk', 6)->nullable();
+            $table->char('kodeMk', 6);
             $table->char('grup', 1)->default('A');
             $table->char('nik', 7)->nullable();
             $table->string('ruang', 25)->nullable();

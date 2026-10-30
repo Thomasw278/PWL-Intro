@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Dosen extends Model
 {
+    use HasFactory;
     protected $table = 'dosens';
     protected $primaryKey = 'nik';
     public $incrementing = false;
